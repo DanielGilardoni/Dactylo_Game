@@ -4,11 +4,11 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 //import static org.assertj.core.api.Assertions.assertThat;
 
-public class MotsTest {
+public class MotTest {
 
     @Test
     public void creationDuTexte(){
-        assertThatThrownBy(() -> new Mots(null)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new Mot(null)).isInstanceOf(IllegalArgumentException.class);
     }
 
 }
