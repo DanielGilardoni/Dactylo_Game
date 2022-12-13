@@ -2,20 +2,27 @@ package principal;
 
 public class Joueur {
     private int nbVie;
+
     public Joueur(int nbVie){
+        if (nbVie < 0) {
+            throw new IllegalArgumentException("Un joueur ne peut pas avoir moins de 0 vies!");
+        }
         this.nbVie = nbVie;
     }
 
     public Joueur(){
-        new Joueur(5);//On mets 5 par defaut mais on pourrait choisir autre chose
+        this(5);//On mets 5 par defaut mais on pourrait choisir autre chose
     }
 
     public int getVies(){
-        return nbVie;
+        return this.nbVie;
     }
 
     public Joueur perdVie(){
-        return new Joueur(nbVie-1);//Ici faire juste nbVie--; serait ok je pense car on ne peut pas modifié nbVie ailleurs
+        if (nbVie == 0) {
+            return this;//On ne peut pas perdre de vie si on en a plus
+        }
+        return new Joueur(nbVie-1);
     }
 
     public Joueur gagneVie(){
