@@ -1,15 +1,16 @@
 package gui;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.event.WindowAdapter;
-
-import java.awt.event.WindowEvent;
+import java.awt.*;
+import java.awt.event.*;
 import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class GUI extends JFrame {
+import gui.controllers.HomeController;
+
+public class GUI extends JFrame implements ActionListener, KeyListener {
 
     private static final long serialVersionUID = 1L;
 
@@ -55,7 +56,22 @@ public class GUI extends JFrame {
     public void setHomeView() {
 		this.getContentPane().removeAll();
 		this.setResizable(true);
+		HomeController controller = new HomeController();
+
 		lastPanel = new HomeView(this);
+		((HomeView) lastPanel).setController(controller);
+		
+	
+		this.getContentPane().add(lastPanel);
+		revalidate();
+		repaint();
+	}
+
+	public void openNormalMode() {
+		this.getContentPane().removeAll();
+		this.setResizable(true);
+		lastPanel = new NormalMode(this);
+	
 		this.getContentPane().add(lastPanel);
 		revalidate();
 		repaint();
@@ -78,5 +94,30 @@ public class GUI extends JFrame {
     	this.dispose();
         System.exit(0);
 	}
+
+	@Override
+	public void keyPressed(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

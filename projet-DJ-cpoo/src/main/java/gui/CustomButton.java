@@ -10,6 +10,7 @@ import java.awt.RenderingHints;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -19,12 +20,14 @@ public class CustomButton extends JPanel implements MouseListener {
 
     private IconPanel icon;
     private JLabel lbl;
+    public JButton button;
 
     private Color background = GUI.LIGHT_COLOR1;
 
     public CustomButton(String path, String text) {
         this.icon = new IconPanel(path, 128);
         this.lbl = new JLabel(text);
+        this.button = new JButton("");
         
         setOpaque(false);
         addMouseListener(this);
@@ -43,6 +46,7 @@ public class CustomButton extends JPanel implements MouseListener {
         this.setLayout(new BorderLayout());
         this.add(leftPan, BorderLayout.WEST);
         this.add(lbl, BorderLayout.CENTER);
+        this.add(button, BorderLayout.CENTER);
     }
 
     @Override
@@ -68,7 +72,9 @@ public class CustomButton extends JPanel implements MouseListener {
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {}
+    public void mouseClicked(MouseEvent e) {
+            
+    }
 
     @Override
     public void mouseEntered(MouseEvent e) {

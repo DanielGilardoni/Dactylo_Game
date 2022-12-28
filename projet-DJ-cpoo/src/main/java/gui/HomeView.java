@@ -10,24 +10,57 @@ import java.awt.RenderingHints;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import gui.controllers.HomeController;
+
 public class HomeView extends JPanel{
     private GUI gui;
+    HomeController controller;
+
+
+    public void setController(HomeController controller) {
+        this.controller = controller;
+    }
 
     public HomeView(GUI gui) {
         this.gui = gui;
         setBackground(GUI.BACKGROUND_COLOR);
+
+        
 
         final JPanel pan = new JPanel();
         pan.setOpaque(false);
         pan.setLayout(new GridLayout());
         pan.setBorder(new EmptyBorder(170, 500, 170, 500));
         final CenterPan centerPan = new CenterPan();
+
+        JButton normalMode = centerPan.buttons[0].button;
+        //normalMode.setPreferredSize(new Dimension(120, 120));
+        normalMode.setText("NORMAL MODE");
+        normalMode.setOpaque(false);
+        normalMode.setContentAreaFilled(false);
+        normalMode.setBorderPainted(false);
+        normalMode.addActionListener((event) -> this.controller.normalModePressed(gui));
+
+        JButton soloMode = centerPan.buttons[1].button;
+        //normalMode.setPreferredSize(new Dimension(120, 120));
+        soloMode.setText("SOLO MODE");
+        soloMode.setOpaque(false);
+        soloMode.setContentAreaFilled(false);
+        soloMode.setBorderPainted(false);
+        soloMode.addActionListener((event) -> this.controller.normalModePressed(gui));
+
         pan.add(centerPan);
+
+        
+
         this.setLayout(new BorderLayout());
         this.add(pan, BorderLayout.CENTER);
+
+        
 
         resize(pan, centerPan);
         gui.addComponentListener(new ComponentAdapter() {
@@ -66,6 +99,7 @@ public class HomeView extends JPanel{
                 new CustomButton("normal-mode", "Normal Mode"),
                 new CustomButton("game-mode", "Game Mode")
             };
+            
             int topBottom = 32, leftRight = 64;
 
             this.setBorder(new EmptyBorder(topBottom, leftRight,
