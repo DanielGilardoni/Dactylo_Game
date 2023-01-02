@@ -1,10 +1,14 @@
 package gui.controllers;
 
-import gui.GUI;
+import gui.views.Window;
 
 public class HomeController {
+    public void playPressed(Window window) {
+        // System.out.println("Start Game!");
+        window.openGameForm();
+    }
 
-    public void normalModePressed(GUI gui){
-        gui.openNormalMode();
+    public void quitPressed() {
+        // System.out.println("Quit Game!");
     }
 }
