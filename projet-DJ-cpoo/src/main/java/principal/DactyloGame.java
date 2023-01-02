@@ -20,14 +20,12 @@ public abstract sealed class DactyloGame permits NormalMode, SoloMode, MultiPlay
         this.lastWord = texte.getListe().peek();
         this.gameMode = gameMode;
 
-
-
     }
 
     private ArrayList<Joueur> copy(ArrayList<Joueur> joueurs){
         ArrayList<Joueur> new_joueurs = new ArrayList<Joueur>();
         for(Joueur j : joueurs){
-            Joueur new_joueur = new Joueur(j.getVies());
+            Joueur new_joueur = new Joueur(j.getNom());
             new_joueurs.add(new_joueur);
         }
 

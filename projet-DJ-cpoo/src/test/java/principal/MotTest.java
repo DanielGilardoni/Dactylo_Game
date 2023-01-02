@@ -8,7 +8,7 @@ public class MotTest {
 
     @Test
     public void creationDuTexte(){
-        assertThatThrownBy(() -> new Mot(null)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Mot.builder().mot(null).build()).isInstanceOf(IllegalArgumentException.class);        
     }
 
 }

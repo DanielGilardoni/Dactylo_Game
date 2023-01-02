@@ -8,22 +8,19 @@ public class JoueurTest {
     
     @Test
     public void testJoueurNegVie() {
-        assertThatThrownBy(() -> new Joueur(-1)).isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> new Joueur(-2)).isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> new Joueur(-3)).isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> new Joueur(-4)).isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> new Joueur(-100)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new Joueur(null)).isInstanceOf(IllegalArgumentException.class);
     }
     
     @Test
     public void testJoueurCreation() {
-        Joueur j1 = new Joueur();
+        Joueur j1 = new Joueur("j1");
         assertThat(j1.getVies()).isEqualTo(5);
+        assertThat(j1.getNom()).isEqualTo("j1");
     }
 
     @Test
     public void testJoueurModifierVie() {
-        Joueur j1 = new Joueur(5);
+        Joueur j1 = new Joueur("j1");
         assertThat(j1.getVies()).isEqualTo(5);
         j1 = j1.perdVie();
         assertThat(j1.getVies()).isEqualTo(4);

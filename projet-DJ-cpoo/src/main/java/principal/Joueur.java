@@ -2,30 +2,51 @@ package principal;
 
 public class Joueur {
     private int nbVie;
+    private String nom;
 
-    public Joueur(int nbVie){
-        if (nbVie < 0) {
-            throw new IllegalArgumentException("Un joueur ne peut pas avoir moins de 0 vies!");
+    public Joueur(String nom){
+        if (nbVie < 0 || nom == null) {
+            throw new IllegalArgumentException("Erreur lors de la création du joueur.");
         }
-        this.nbVie = nbVie;
+        this.setVies(5);
+        this.setNom(nom);
     }
 
-    public Joueur(){
-        this(5);//On mets 5 par defaut pour le nombre de vie
+    public String getNom(){
+        return this.nom;
+    }
+
+    public void setNom(String nom){
+        this.nom = nom;
     }
 
     public int getVies(){
         return this.nbVie;
+    }    
+
+    public void setVies(int nbVie){
+        this.nbVie = nbVie;
+    }
+
+    public void setViesPerdue(int nbVie){
+        this.nbVie = nbVie - 1;
+    }
+
+    public void setViesGagne(int nbVie){
+        this.nbVie = nbVie + 1;
     }
 
     public Joueur perdVie(){
         if (nbVie == 0) {
             return this;//On ne peut pas perdre de vie si on en a plus
+        }else {
+            this.setViesPerdue(getVies());
+            return this;
         }
-        return new Joueur(nbVie-1);
     }
 
     public Joueur gagneVie(){
-        return new Joueur(nbVie+1);
+        this.setViesGagne(getVies());
+        return this;
     }
 }
