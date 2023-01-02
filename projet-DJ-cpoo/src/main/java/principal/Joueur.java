@@ -11,7 +11,7 @@ public class Joueur {
     }
 
     public Joueur(){
-        this(5);//On mets 5 par defaut mais on pourrait choisir autre chose
+        this(5);//On mets 5 par defaut pour le nombre de vie
     }
 
     public int getVies(){
