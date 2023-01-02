@@ -67,6 +67,20 @@ public class GUI extends JFrame implements ActionListener, KeyListener {
 		repaint();
 	}
 
+	public void setSettingsView() {
+		this.getContentPane().removeAll();
+		this.setResizable(true);
+		HomeController controller = new HomeController();
+
+		lastPanel = new SettingsView(this);
+		((HomeView) lastPanel).setController(controller);
+		
+	
+		this.getContentPane().add(lastPanel);
+		revalidate();
+		repaint();
+	}
+
 	public void openNormalMode() {
 		this.getContentPane().removeAll();
 		this.setResizable(true);
