@@ -34,7 +34,7 @@ public class ListeMots {
             for (String ligne : lignes) {
                 String[] mots = ligne.split(" "); //Séparation des mots pour chaque ligne
                 for (String mot : mots) {
-                    Mot motNouveau = new Mot(mot);
+                    Mot motNouveau = Mot.builder().mot(mot).build();//new Mot(mot);
                     liste.add(motNouveau);
                 }
             }
