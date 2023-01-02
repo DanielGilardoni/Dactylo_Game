@@ -1,27 +1,34 @@
 package gui;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.ArrayList;
 
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import java.awt.*;
+import java.io.File;
+
 import gui.views.Window;
 import gui.views.SettingsView;
 import principal.Joueur;
-import principal.Dactylo;
+import principal.DactyloFactory;
+import principal.DactyloGame;
 import java.awt.EventQueue;
 
 public class DactyloGui {
 
-	Dactylo dactyloGui;
-	List<Joueur> joueurs = new LinkedList<>();
+	DactyloGame dactyloGui;
+	File texteFile = new File("src/main/java/static/dictionnaire.txt");
 
-	public Dactylo initializeDactylo(SettingsView form) {
+	public DactyloGame initializeDactylo(SettingsView form) {
+		if (form.ModeNormal.isSelected()) {
+			dactyloGui = getDactyloGame(1, texteFile, joueurs);
+		}
 		setPlayers(form);
 		this.dactyloGui = new Dactylo(joueurs);
 		return this.dactyloGui;
 	}
+
 
 	private void setPlayers(SettingsView form) {
 		joueurs.add(createJoueur(form.playerOneName));

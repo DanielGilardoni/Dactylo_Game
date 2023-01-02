@@ -38,14 +38,14 @@ public class HomeView extends JPanel{
         name.setForeground(Color.BLACK);
 
         // JPanel boxButtonPanel = new JPanel();
-        JButton play = new JButton(createIcon("catane/src/static/start.png", 100, 100));
+        JButton play = new JButton(createIcon("projet-DJ-cpoo/src/static/start.png", 100, 100));
         play.setPreferredSize(new Dimension(120, 120));
         play.setOpaque(false);
         play.setContentAreaFilled(false);
         play.setBorderPainted(false);
         play.setFocusPainted(false); 
 
-        play.addMouseListener(new Selection(play, "catane/src/static/start.png"));
+        play.addMouseListener(new Selection(play, "projet-DJ-cpoo/src/static/start.png"));
         play.addActionListener((event) -> this.controller.playPressed(window));
 
         // boxButtonPanel.add(play);
@@ -56,7 +56,7 @@ public class HomeView extends JPanel{
 
         // Image Background Panel
         JPanel imageBackgroundPanel = new JPanel();
-        JLabel backgroundLabel = new JLabel(createIcon("catane/src/static/medieval_background.jpg", window.getBounds().width+300, window.getBounds().height-120));
+        JLabel backgroundLabel = new JLabel(createIcon("projet-DJ-cpoo/src/static/medieval_background.jpg", window.getBounds().width+300, window.getBounds().height-120)); // Trouver une image cohérente
         imageBackgroundPanel.add(backgroundLabel);
 
         // Add content to this main Panel
@@ -68,7 +68,7 @@ public class HomeView extends JPanel{
     public void setNewFont() {
         try {
 
-            this.customFont = Font.createFont(Font.TRUETYPE_FONT, new File("catane/src/static/Poppins-Bold.ttf")).deriveFont(45f);
+            this.customFont = Font.createFont(Font.TRUETYPE_FONT, new File("projet-DJ-cpoo/src/static/Poppins-Bold.ttf")).deriveFont(45f);
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             ge.registerFont(customFont);
 

@@ -8,7 +8,7 @@ import java.awt.event.WindowEvent;
 
 import gui.views.SettingsView;
 import gui.controllers.HomeController;
-import principal.Dactylo;
+import principal.DactyloGame;
 import principal.Joueur;
 import principal.ListeMots;
 
@@ -18,7 +18,7 @@ public class Window extends JFrame{
     static final int HEIGHT = 700;
 
     // Models
-    public Dactylo currentDactylo;
+    public DactyloGame currentDactylo;
     ListeMots listeMotsModel;
     public static List<Joueur> joueurs;
     public static int numberOfPlayers;
@@ -59,18 +59,22 @@ public class Window extends JFrame{
     }
 
     public void openGameForm() {
-        // This method renders the form and get all the data from from and intialize the game
-        // Send all data inside a class like Game to OpenBoard 
-        // e.g. Game game = new Game(form.data);
+        // This method renders the form and get all the data from form and intialize the dactylo
+        // Send all data inside a class like DactyloGame to OpenBoard 
+        // e.g. DactyloGame dactylogame = new DactyloGame(form.data);
         // e.g.  openBoard(game)
 
         SettingsView form = new SettingsView(this);
         this.getContentPane().removeAll();
-        // this.setJMenuBar(null);
 		this.getContentPane().add(form);
         this.revalidate();
 		this.repaint();
     }
+
+    public void setGame(DactyloGame game) {
+        this.currentDactylo = game;
+    }
+
 }
 /*
 package gui.views;
