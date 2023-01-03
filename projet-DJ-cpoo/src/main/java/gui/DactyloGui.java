@@ -19,13 +19,16 @@ public class DactyloGui {
 
 	DactyloGame dactyloGui;
 	File texteFile = new File("src/main/java/static/dictionnaire.txt");
+	ArrayList<Joueur> joueurs;
 
 	public DactyloGame initializeDactylo(SettingsView form) {
-		if (form.ModeNormal.isSelected()) {
-			dactyloGui = getDactyloGame(1, texteFile, joueurs);
-		}
 		setPlayers(form);
-		this.dactyloGui = new Dactylo(joueurs);
+		if (form.modePanel(). isSelected()) {//Il faut accéder au bouton et voir si il est cliqué peut-être avec addActionListener ?
+			this.dactyloGui = DactyloFactory.getDactyloGame(1, texteFile, joueurs);
+		} else if(form.SoloMode.isSelected()){
+			this.dactyloGui = DactyloFactory.getDactyloGame(2, texteFile, joueurs);
+		} else 
+			this.dactyloGui = DactyloFactory.getDactyloGame(3, texteFile, joueurs);
 		return this.dactyloGui;
 	}
 
