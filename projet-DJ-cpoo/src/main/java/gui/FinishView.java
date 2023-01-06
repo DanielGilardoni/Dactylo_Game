@@ -7,17 +7,17 @@ import javax.swing.JPanel;
 
 public class FinishView extends JPanel{
     public FinishView(Gui gui) {
-		this.setBackground(Gui.BLACK_COLOR);
+		this.setBackground(Gui.MINT_COLOR);
 		this.setLayout(new GridLayout(1, 2));
 
 //		this.add(new Statistiquespanel(gui.getJeu()));
 
 		JPanel buttons = new JPanel();
 		buttons.setLayout(new GridLayout(3, 1));
-		buttons.setBackground(Gui.BLACK_COLOR);
+		buttons.setBackground(Gui.MINT_COLOR);
 		
 		JPanel color1 = new JPanel();
-		color1.setBackground(Gui.BLACK_COLOR);
+		color1.setBackground(Gui.MINT_COLOR);
 		buttons.add(color1);
 
 
@@ -27,14 +27,14 @@ public class FinishView extends JPanel{
 		retry.addActionListener(e -> {
 			gui.setModeView();
 		});
-		retry.setBackground(Gui.BLACK_COLOR);
+		retry.setBackground(Gui.MINT_COLOR);
 		lost.add(retry);
 
 		JButton settings = new JButton("PARAMETRES");
 		retry.addActionListener(e -> {
 			gui.setSettingsView();
 		});
-		settings.setBackground(Gui.BLACK_COLOR);
+		settings.setBackground(Gui.MINT_COLOR);
 		lost.add(settings);
 
 		JButton quit = new JButton("QUITTER");
@@ -42,13 +42,13 @@ public class FinishView extends JPanel{
 		{
 			System.exit(0);		
 		});
-		quit.setBackground(Gui.BLACK_COLOR);
-		lost.setBackground(Gui.BLACK_COLOR);
+		quit.setBackground(Gui.MINT_COLOR);
+		lost.setBackground(Gui.MINT_COLOR);
 		lost.add(quit);
 		buttons.add(lost);
 				
 		JPanel color2 = new JPanel();
-		color2.setBackground(Gui.BLACK_COLOR);
+		color2.setBackground(Gui.MINT_COLOR);
 		buttons.add(color2);
 		
 		this.add(buttons);
