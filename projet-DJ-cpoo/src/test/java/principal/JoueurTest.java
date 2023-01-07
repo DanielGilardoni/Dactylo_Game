@@ -38,4 +38,12 @@ public class JoueurTest {
         j1 = j1.perdVie();
         assertThat(j1.getVies()).isNotEqualTo(-1);        
     }
+
+    @Test
+    public void testJoueurSetNom() {
+        Joueur j1 = new Joueur("j1");
+        assertThatThrownBy(() -> j1.setNom(null)).isInstanceOf(IllegalArgumentException.class);
+        j1.setNom("j2");
+        assertThat(j1.getNom()).isEqualTo("j2");
+    }
 }

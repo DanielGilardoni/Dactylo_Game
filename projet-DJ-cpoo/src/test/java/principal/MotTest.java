@@ -11,4 +11,8 @@ public class MotTest {
         assertThatThrownBy(() -> Mot.builder().mot(null).build()).isInstanceOf(IllegalArgumentException.class);        
     }
 
+    public void testMotCreation() {
+        
+    }
+
 }
