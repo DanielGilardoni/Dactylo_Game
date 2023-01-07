@@ -8,7 +8,10 @@ import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
 
+import java.util.ArrayList;
+
 import principal.DactyloGame;
+import principal.Joueur;
 
 public class SettingsView extends JPanel {
 
@@ -96,19 +99,27 @@ public class SettingsView extends JPanel {
 
 	public JButton initConfirmButton(Gui gui){
 		JButton confirm = new JButton("CONFIRMER");
+		ArrayList<Joueur> joueurs = new ArrayList<Joueur>();
+		Joueur joueur = new Joueur(this.getName(), this.gethealth());
+		joueurs.add(joueur);
 		DactyloGame dactylo = gui.getDactylo();
 		confirm.addActionListener(e -> {
-			//game.getEtat().setHealth(this.gethealth());
-			//game.getEtat().setEndTime(this.getTime());
-			//game.getEtat().setMax(this.getMax());
-			//gui.setGameView();
+			dactylo.setEndTime(this.getTime());
+			dactylo.setMax(this.getMax());
+			dactylo.setJoueurs(joueurs);
+			gui.setGameView();
 		});
 		return (confirm);
 	}
 
-//	public int gethealth(){
-//		return this.health.getValue();
-//	}
+
+	public String getName(){
+		return this.name.getText();
+	}
+
+	public int gethealth(){
+		return this.health.getValue();
+	}
 
 	public int getTime(){
 		return this.time.getValue();

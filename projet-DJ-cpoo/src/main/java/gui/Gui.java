@@ -46,15 +46,15 @@ public class Gui extends JFrame {
 		repaint();
 	}
 
-//	public void setGameView() {
-//		this.getContentPane().removeAll();
-//		this.setResizable(true);
-//		lastPanel = new GameView(this, dactylo);
-//
-//		this.getContentPane().add(lastPanel);
-//		revalidate();
-//		repaint();
-//	}
+	public void setGameView() {
+		this.getContentPane().removeAll();
+		this.setResizable(true);
+		lastPanel = new GameView(this, dactylo);
+
+		this.getContentPane().add(lastPanel);
+		revalidate();
+		repaint();
+	}
 
 	public void setFinishView(DactyloGame dactylo) {
 		this.removeKeyListener(this.getKeyListeners()[0]);
