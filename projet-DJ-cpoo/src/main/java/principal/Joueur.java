@@ -1,16 +1,22 @@
 package principal;
 
 public class Joueur {
-    private int nbVie;
+    private int nbVies;
     private String nom;
 
-    public Joueur(String nom){
-        if (nbVie < 0 || nom == null) {
+    public Joueur(String nom, int vies){
+        if (nbVies < 0 || nom == null) {
             throw new IllegalArgumentException("Erreur lors de la création du joueur.");
         }
-        this.setVies(5);
-        this.setNom(nom);
+        this.nbVies = vies;
+        this.nom = nom;
     }
+
+    public Joueur(String nom){
+        this(nom, 5);
+    }
+
+
 
     public String getNom(){
         return this.nom;
@@ -21,23 +27,23 @@ public class Joueur {
     }
 
     public int getVies(){
-        return this.nbVie;
+        return this.nbVies;
     }    
 
     public void setVies(int nbVie){
-        this.nbVie = nbVie;
+        this.nbVies = nbVie;
     }
 
     public void setViesPerdue(int nbVie){
-        this.nbVie = nbVie - 1;
+        this.nbVies = nbVie - 1;
     }
 
     public void setViesGagne(int nbVie){
-        this.nbVie = nbVie + 1;
+        this.nbVies = nbVie + 1;
     }
 
     public Joueur perdVie(){
-        if (nbVie == 0) {
+        if (nbVies == 0) {
             return this;//On ne peut pas perdre de vie si on en a plus
         }else {
             this.setViesPerdue(getVies());
