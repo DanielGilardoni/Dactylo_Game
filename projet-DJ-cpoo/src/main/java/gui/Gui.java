@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 import principal.DactyloFactory;
 import principal.DactyloGame;
@@ -92,7 +94,7 @@ public class Gui extends JFrame {
 	}
 
 	public void initDactylo() {
-		File file = new File("projet-DJ-cpoo/src/static/dictionnaire.txt");
+		File file = new File("src/static/dictionnaire.txt");
 		this.dactylo = DactyloFactory.getDactyloGame(1, file, null);
 	}
 

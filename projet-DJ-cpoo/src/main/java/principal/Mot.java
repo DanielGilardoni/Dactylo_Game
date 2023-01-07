@@ -77,7 +77,7 @@ public class Mot {
         }
 
         public boolean isCorrect() {
-            return (mot == null);
+            return (mot != null);
         }
     }
 

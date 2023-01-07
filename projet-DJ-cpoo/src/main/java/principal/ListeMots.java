@@ -15,6 +15,7 @@ public class ListeMots {
             throw new IllegalArgumentException("Le fichier ne peut pas être null");
         }
         this.texte = texte;
+        System.out.println(texte.getAbsolutePath());
         liste = new LinkedList<Mot>();
     }
 
