@@ -9,7 +9,7 @@ public abstract sealed class DactyloGame permits NormalMode, SoloMode, MultiPlay
     private ArrayList<Joueur> joueurs;//final ?
     private ListeMots texte;
     private Stats stats;
-    private Mot lastWord; //designe le prochain mot que le joueur doit taper
+    private Mot nextWord; //designe le prochain mot que le joueur doit taper
     private int gameMode; //le mode de jeu choisi : 1 pour NormalMode, 2 pour SoloMode, 3 pour MultiPlayerMode, sinon NormalMode
     private int max;//Le nombre de mot max qu'on veut dans la partie
     private int time;//Le temps que dure la partie en seconde
@@ -22,7 +22,7 @@ public abstract sealed class DactyloGame permits NormalMode, SoloMode, MultiPlay
             this.joueurs = copy(joueurs);
         this.texte = new ListeMots(texteFile);
         this.texte.chargerTexte();
-        this.lastWord = texte.getListe().peek();
+        this.nextWord = texte.getListe().peek();
         this.gameMode = gameMode;
         this.time = 30;//30 secondes par defaut
         this.max = 100;//100 mots max par defaut
@@ -65,6 +65,14 @@ public abstract sealed class DactyloGame permits NormalMode, SoloMode, MultiPlay
 
     public void setEndTime(int timer){
         this.time = timer;
+    }
+
+    public ListeMots getText() {
+        return this.texte;
+    } 
+
+    public String getNextWordStr(){
+        return this.nextWord.getMot();
     }
 
 
