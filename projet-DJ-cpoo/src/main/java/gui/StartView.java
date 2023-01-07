@@ -14,13 +14,13 @@ public class StartView extends JPanel{
 
         JPanel color1 = new JPanel();
 
-        color1.setBackground(Gui.BLACK_COLOR);
+        color1.setBackground(Gui.MINT_COLOR);
         this.add(color1);            
 
         JPanel allButton = new JPanel();
 
         allButton.setLayout(new GridLayout(3, 1));
-        allButton.setBackground(Gui.BLACK_COLOR);
+        allButton.setBackground(Gui.MINT_COLOR);
         JButton start = new JButton("COMMENCER");
         start.setBackground(Gui.WHITE_COLOR);
 
@@ -41,7 +41,7 @@ public class StartView extends JPanel{
 		this.add(allButton);
 
 		JPanel color2 = new JPanel();
-		color2.setBackground(Gui.BLACK_COLOR);
+		color2.setBackground(Gui.MINT_COLOR);
 		this.add(color2);
     }    
 }
