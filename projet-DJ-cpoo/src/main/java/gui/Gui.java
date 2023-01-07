@@ -6,8 +6,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
 
 import principal.DactyloFactory;
 import principal.DactyloGame;
