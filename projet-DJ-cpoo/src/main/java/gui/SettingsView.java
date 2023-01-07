@@ -102,6 +102,7 @@ public class SettingsView extends JPanel {
 		ArrayList<Joueur> joueurs = new ArrayList<Joueur>();
 		Joueur joueur = new Joueur(this.getName(), this.gethealth());
 		joueurs.add(joueur);
+		gui.initDactylo();
 		DactyloGame dactylo = gui.getDactylo();
 		confirm.addActionListener(e -> {
 			dactylo.setEndTime(this.getTime());

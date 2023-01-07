@@ -16,8 +16,10 @@ public abstract sealed class DactyloGame permits NormalMode, SoloMode, MultiPlay
 
     
     public DactyloGame(ArrayList<Joueur> joueurs, File texteFile, int gameMode){
-
-        this.joueurs = copy(joueurs);
+        if(joueurs == null)
+            this.joueurs = null;
+        else
+            this.joueurs = copy(joueurs);
         this.texte = new ListeMots(texteFile);
         this.texte.chargerTexte();
         this.lastWord = texte.getListe().peek();
