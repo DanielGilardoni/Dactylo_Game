@@ -21,6 +21,8 @@ public class Gui extends JFrame {
 	public static Color WHITE_COLOR = new Color(233, 241, 247);
 	public static Color BEIGE_COLOR = new Color(235, 224, 179);
 	public static Color MINT_COLOR = new Color(179, 235, 186);
+	public static Color RED_COLOR = new Color(250, 0, 0);
+	public static Color GREEN_COLOR = new Color(0, 250, 0);
 
 	public Gui(int w, int h) {
 		this.width = w;

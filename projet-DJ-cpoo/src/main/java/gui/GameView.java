@@ -43,7 +43,7 @@ public class GameView extends JPanel{
     }
     
 	public void newWord(String oldString) {
-		this.remove(mots);
+		this.dactylo.getText().remove();
 		this.mots = new ModeNormalView(this.dactylo.getText(), this, this.dactylo);
 		this.add(this.mots, BorderLayout.CENTER);
 		this.repaint();
