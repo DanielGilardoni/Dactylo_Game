@@ -1,21 +1,22 @@
 package gui;
 
-import java.util.LinkedList;
 import java.awt.Font;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import principal.ListeMots;
+import principal.DactyloGame;
 
 public class ModeNormalView extends JPanel{
+    private DactyloGame dactylo = null;
     private ListeMots list = null;
 	private JPanel[] mots;
     private String curString = "";
     private GameView game;
 
-    public ModeNormalView(ListeMots list, GameView game)
-    {	
+    public ModeNormalView(ListeMots list, GameView game, DactyloGame dactylo) {	
+        this.dactylo = dactylo;
         this.list = list;
         this.setBackground(Gui.MINT_COLOR);
         mots = createMotsPanel(list);
@@ -28,16 +29,13 @@ public class ModeNormalView extends JPanel{
 //        curJPanel.add(curJLabel);
 //        this.add(curJPanel);
 
-        for (int i = 1; i < list.getListe().size(); i++)
+        for (int i = 1; i < dactylo.getMax(); i++)
             this.add(mots[i]);
     }
 
-    private JPanel[] createMotsPanel(ListeMots list)
-    {
-        JPanel []res = new JPanel[list.getListe().size()];
-
-        for (int i = 0; i < list.getListe().size(); i++)
-        {
+    private JPanel[] createMotsPanel(ListeMots list) {
+        JPanel []res = new JPanel[dactylo.getMax()];
+	        for (int i = 0; i < dactylo.getMax(); i++) {
             JLabel mot = new JLabel(list.getListe().get(i).getMot());
             mot.setForeground(Gui.BLACK_COLOR);
             mot.setFont(new Font("Verdana", Font.PLAIN, 25));
@@ -48,21 +46,21 @@ public class ModeNormalView extends JPanel{
         return (res);
     }
 
-    private String updateColorCurrent()
-    {
-        String res = "";
-        for (int i = 0; i < list.getListe().size(); i++)
-        {
-            if (list.getListe().get(i).getMot() == list.getListe().peek().getMot())
-            {
-                mots[i].setBackground(Gui.BEIGE_COLOR);
-                res = list.getListe().get(i).getMot();
-            }
-            else
-                mots[i].setBackground(Gui.MINT_COLOR);
-        }
-        return res;
-    }
+//    private String updateColorCurrent()
+//    {
+//        String res = "";
+//        for (int i = 0; i < list.getListe().size(); i++)
+//        {
+//            if (list.getListe().get(i).getMot() == list.getListe().peek().getMot())
+//            {
+//                mots[i].setBackground(Gui.BEIGE_COLOR);
+//                res = list.getListe().get(i).getMot();
+//            }
+//            else
+//                mots[i].setBackground(Gui.MINT_COLOR);
+//        }
+//        return res;
+//    }
 
     public JPanel getPanel() {
 		return this;
