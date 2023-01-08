@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class ListeMots {
@@ -17,6 +18,8 @@ public class ListeMots {
         this.texte = texte;
         liste = new LinkedList<Mot>();
         chargerTexte();
+        if(liste.size() == 0)
+            throw new IllegalArgumentException("Le fichier ne peut pas être vide");
     }
 
     public LinkedList<Mot> getListe(){
@@ -42,6 +45,9 @@ public class ListeMots {
         }
         catch (FileNotFoundException e) {
             throw new IllegalArgumentException("Erreur le fichier n'a pas été trouvé.");
+        }
+        catch (NoSuchElementException e) {
+            throw new IllegalArgumentException("Erreur le fichier est vide.");
         }
     }
 

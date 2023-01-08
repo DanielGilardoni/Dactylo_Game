@@ -16,10 +16,9 @@ public abstract sealed class DactyloGame permits NormalMode, SoloMode, MultiPlay
 
     
     public DactyloGame(ArrayList<Joueur> joueurs, File texteFile, int gameMode){
-        if(joueurs == null)
-            this.joueurs = null;
-        else
-            this.joueurs = copy(joueurs);
+        if(joueurs == null || joueurs.size() == 0)
+            throw new IllegalArgumentException("Il faut au moins un joueur.");
+        this.joueurs = copy(joueurs);
         this.texte = new ListeMots(texteFile);
         this.nextWord = texte.getListe().peek();
         this.gameMode = gameMode;
@@ -39,15 +38,18 @@ public abstract sealed class DactyloGame permits NormalMode, SoloMode, MultiPlay
     }
 
     public ArrayList<Joueur> getJoueurs(){
-        return copy(this.joueurs);
+            return copy(this.joueurs);
     }
 
     public void setJoueurs(ArrayList<Joueur> players){
+        if(joueurs == null || joueurs.size() == 0)
+            throw new IllegalArgumentException("Il faut au moins un joueur.");
         this.joueurs = copy(players);
     }
 
     public void addJoueur(Joueur j) {
-        this.joueurs.add(j);
+        if(j != null)
+            this.joueurs.add(j);
     }
 
     public int getMax(){
@@ -55,7 +57,8 @@ public abstract sealed class DactyloGame permits NormalMode, SoloMode, MultiPlay
     }
 
     public void setMax(int m){
-        this.max = m;
+        if(m > 0 && m < 10000)
+            this.max = m;
     }
 
     public int getTime(){
@@ -63,7 +66,8 @@ public abstract sealed class DactyloGame permits NormalMode, SoloMode, MultiPlay
     }
 
     public void setEndTime(int timer){
-        this.time = timer;
+        if(timer > 0 && timer < 10000)
+            this.time = timer;
     }
 
     public ListeMots getText() {

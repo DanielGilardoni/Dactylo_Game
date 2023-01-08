@@ -12,6 +12,8 @@ public class ListeMotsTest {
     public void testListeMotsPasDeFichier() {
         assertThatThrownBy(() -> new ListeMots(null)).isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> new ListeMots(new File("mauvaise/reference.txt"))).isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> new ListeMots(new File("src/static/vide.txt"))).isInstanceOf(IllegalArgumentException.class);//Si il n'y a pas de texte dans le fichier
     }
 
     @Test

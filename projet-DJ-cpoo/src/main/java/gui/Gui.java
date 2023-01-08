@@ -6,9 +6,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import java.io.File;
+import java.util.ArrayList;
 
 import principal.DactyloFactory;
 import principal.DactyloGame;
+import principal.Joueur;
 
 public class Gui extends JFrame {
 
@@ -91,9 +93,9 @@ public class Gui extends JFrame {
 		return this.dactylo;
 	}
 
-	public void initDactylo() {
+	public void initDactylo(ArrayList<Joueur> joueurs) {
 		File file = new File("src/static/dictionnaire.txt");
-		this.dactylo = DactyloFactory.getDactyloGame(1, file, null);
+		this.dactylo = DactyloFactory.getDactyloGame(1, file, joueurs);
 	}
 
 }
