@@ -22,7 +22,7 @@ public class GameView extends JPanel{
         retour = new RetourView(gui);
         this.add(retour, BorderLayout.NORTH);
 
-        mots = new ModeNormalView(dactylo.getText(), this);
+        mots = new ModeNormalView(dactylo.getText(), this, dactylo);
         this.add(mots.getPanel(), BorderLayout.CENTER);
 
         KeyAdapter keyAdapter = new KeyAdapter()
@@ -44,7 +44,7 @@ public class GameView extends JPanel{
     
 	public void newWord(String oldString) {
 		this.remove(mots);
-		this.mots = new ModeNormalView(this.dactylo.getText(), this);
+		this.mots = new ModeNormalView(this.dactylo.getText(), this, this.dactylo);
 		this.add(this.mots, BorderLayout.CENTER);
 		this.repaint();
 		this.revalidate();
