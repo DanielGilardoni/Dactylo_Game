@@ -3,7 +3,7 @@ package principal;
 public class Stats {
     private int temps, precision, regularite = 0;//Initialiser à 0 par defaut
 
-    public Stats(){}//il existe par defaut je pense 
+    public Stats(){} 
 
     public Stats(int t, int p, int r){
         this.temps = t;
@@ -12,8 +12,7 @@ public class Stats {
     }
 
     public Stats calcStats(ListeMots a, ListeMots b){
-        return new Stats();//On va comparer les mots tapés aux mots attendues mais c'est peut-être pas la meilleur solution
-        //cf commentaires de ListeMots
+        return new Stats();
     }
 
     public int getTemps(){

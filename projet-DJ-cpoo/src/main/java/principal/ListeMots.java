@@ -51,11 +51,6 @@ public class ListeMots {
         }
     }
 
-    //Si on crée une liste avec les mots tapés, on ajoute à la fin. (Pour comparer facilement avec Liste de depart)
-    //Si on veut comparer à la fin, alors il faut garder la liste du texte de depart 
-    //quelque part, donc c'est peut-être mieux de comparer au fur et à mesure (on a juste à afficher les 15 premiers
-    // et supprimer quand un mot est tapé)
-
     public void remove(){
         if(!liste.isEmpty()){
             liste.removeFirst();

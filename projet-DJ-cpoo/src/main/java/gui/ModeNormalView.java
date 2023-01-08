@@ -94,44 +94,6 @@ public class ModeNormalView extends JPanel{
 
 }
 
-//	public String updateColorCurrent()
-//	{
-//		Mot first = this.list.getFirst();
-//		String current = first.getStr();
-//		String res = "";
-//		int pos = first.getPos();
-//		int length = first.getLength();
-//
-//		if (pos <= length) {
-//			res += "<html>";
-//			if (pos > 0) {
-//				String tmp = "";
-//				for(int i = 0; i < pos; i++) {
-//					boolean[] bool = first.getGoodkey();
-//					if (bool[i] == false)
-//						tmp += "<FONT COLOR=RED>" + current.charAt(i) +  "</FONT>";
-//					else
-//						tmp += "<FONT COLOR=GREEN>" + current.charAt(i) +  "</FONT>";
-//				}
-//				res += tmp;
-//			}
-//			if (pos != length)
-//				res += "<FONT COLOR=YELLOW>" + current.charAt(pos) + "</FONT>";
-//			if (pos + 1 < length) {
-//				char [] tmp = new char [length - pos - 1];
-//				for(int i = 0, j = pos + 1; j < length; i++, j++)
-//					tmp[i] = current.charAt(j);
-//				String temp = "<FONT COLOR=WHITE>" + new String(tmp) + "</FONT>";
-//				res += temp;
-//			}
-//			res += "</html>";
-//			game.setoldString(res);
-//			return (res);
-//		}else {
-//			return (game.getoldString());
-//		}
-//	}
-
     public JPanel getPanel() {
 		return this;
 	}

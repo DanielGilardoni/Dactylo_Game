@@ -10,8 +10,6 @@ public class FinishView extends JPanel{
 		this.setBackground(Gui.MINT_COLOR);
 		this.setLayout(new GridLayout(1, 2));
 
-//		this.add(new StatsView (gui.getJeu()));
-
 		JPanel buttons = new JPanel();
 		buttons.setLayout(new GridLayout(3, 1));
 		buttons.setBackground(Gui.MINT_COLOR);

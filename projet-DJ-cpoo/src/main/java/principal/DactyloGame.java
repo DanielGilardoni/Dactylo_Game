@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public abstract sealed class DactyloGame permits NormalMode, SoloMode, MultiPlayerMode {
     //On utilise un Factory Design Pattern car il y a plusieurs modes de jeux, et qu'on voudra peut-être pouvoir en ajouter
 
-    private ArrayList<Joueur> joueurs;//final ?
+    private ArrayList<Joueur> joueurs;
     private ListeMots texte;
     private Stats stats;
     private Mot nextWord; //designe le prochain mot que le joueur doit taper
