@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import principal.DactyloFactory;
 import principal.DactyloGame;
 import principal.Joueur;
-
+/**
+ * @authors [Cortial Jade, Gilardoni Daniel]
+ */
 public class Gui extends JFrame {
 
 	private JPanel lastPanel;
