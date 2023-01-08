@@ -13,16 +13,17 @@ public class GameView extends JPanel{
     private RetourView retour;
     private ModeNormalView mots;
 	private long startTime;
+    private int pos = 0;
 
     public GameView(Gui gui, DactyloGame dactylo) {
         this.setBackground(Gui.MINT_COLOR);
         this.dactylo = dactylo;
-
+        
         this.setLayout(new BorderLayout());
         retour = new RetourView(gui);
         this.add(retour, BorderLayout.NORTH);
 
-        mots = new ModeNormalView(dactylo.getText(), this, dactylo);
+        mots = new ModeNormalView(dactylo.getText(), this, dactylo, pos);
         this.add(mots.getPanel(), BorderLayout.CENTER);
 
         KeyAdapter keyAdapter = new KeyAdapter()
@@ -35,16 +36,17 @@ public class GameView extends JPanel{
                     gui.setFinishView(courant);
                 }
                 else {
-                    newWord(GameView.this.dactylo.getText().getListe().peek().getMot());
+                    newWord(GameView.this.dactylo.getText().getListe().peek().getMot(), pos);
                 }
             }
         };
         gui.addKeyListener(keyAdapter);
     }
     
-	public void newWord(String oldString) {
+	public void newWord(String oldString, int pos) {
 		this.dactylo.getText().remove();
-		this.mots = new ModeNormalView(this.dactylo.getText(), this, this.dactylo);
+        pos++;
+		this.mots = new ModeNormalView(this.dactylo.getText(), this, this.dactylo, pos);
 		this.add(this.mots, BorderLayout.CENTER);
 		this.repaint();
 		this.revalidate();

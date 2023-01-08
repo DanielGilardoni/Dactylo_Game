@@ -15,9 +15,11 @@ public class ModeNormalView extends JPanel{
 	private JPanel[] mots;
     private String curString = "";
     private GameView game;
+    private int pos = 0;
 
-    public ModeNormalView(ListeMots list, GameView game, DactyloGame dactylo) {	
+    public ModeNormalView(ListeMots list, GameView game, DactyloGame dactylo, int pos) {	
         this.dactylo = dactylo;
+        this.pos = pos;
         this.list = list;
         this.setBackground(Gui.MINT_COLOR);
         this.mots = createMotsPanel(list);
@@ -51,51 +53,51 @@ public class ModeNormalView extends JPanel{
 		Mot first = this.list.getListe().getFirst();
 		String current = first.getMot();
         String res = "";
-		int pos = first.getMot().charAt(0);
 		int length = first.getMot().length();
-		if (pos <= length) {
+        System.out.println("pos = " + this.pos + " length = " + length);
+		if (this.pos <= length) {
+            System.out.println("pos <= length");
 			res += "<html>";
-			if (pos > 0) {
+			if (this.pos >= 0 && this.pos < length) {
+                System.out.println("pos >= 0");
 				String tmp = "";
-				for(int i = 0; i < pos; i++) {
+				for(int i = 0; i < this.pos; i++) {
 					tmp += current.charAt(i);
-//					boolean[] bool = first.getGoodkey();
-//					if (bool[i] == false)
-//						tmp += "<FONT COLOR=RED>" + current.charAt(i) +  "</FONT>";
-//					else
-//						tmp += "<FONT COLOR=GREEN>" + current.charAt(i) +  "</FONT>";
 				}
 				res += tmp;
 			}
-			if (pos != length)
-				res += "<FONT COLOR=YELLOW>" + current.charAt(pos) + "</FONT>";
-//			if (pos + 1 < length) {
-//				char [] tmp = new char [length - pos - 1];
-//				for(int i = 0, j = pos + 1; j < length; i++, j++)
-//					tmp[i] = current.charAt(j);
-//				String temp = "<FONT COLOR=WHITE>" + new String(tmp) + "</FONT>";
-//				res += temp;
-//			}
-//			res += "</html>";
-//			game.setoldString(res);
-//			return (res);
-//		}else {
-//			return (game.getoldString());
-//		}
-
-		}
-		else {
-			if (this.list.getListe().get(0).compareMots(first) == true) {
-				res += "<FONT COLOR=GREEN>" + res + "</FONT>";
+			if (this.pos != length) {
+                System.out.println("pos != length");
+				res += "<FONT COLOR=YELLOW>" + current.charAt(this.pos) + "</FONT>";
+            }
+            if (this.pos == length) {
+                System.out.println("pos == length");
+                if (this.list.getListe().get(0).compareMots(first) == true) {
+                    System.out.println("compareMots == true");
+                    res += "<FONT COLOR=GREEN>" + res + "</FONT>";
+                }
+                else {
+                    System.out.println("compareMots == false");
+                    res += "<FONT COLOR=RED>" + res + "</FONT>";
+                } 
+            }
+			else if (this.pos < length) {
+                System.out.println("pos + 1 < length");
+				char [] tmp = new char [length - this.pos - 1];
+				for(int i = 0, j = this.pos + 1; j < length; i++, j++)
+					tmp[i] = current.charAt(j);
+				String temp = "<FONT COLOR=WHITE>" + new String(tmp) + "</FONT>";
+				res += temp;
 			}
-			else {
-				res += "<FONT COLOR=RED>" + res + "</FONT>";
-			} 
+            System.out.println("res = " + res);
+			res += "</html>";
+            System.out.println("pos = " + pos);
+			game.newWord(current, pos);
+			return (res);
+		}else {
+            return (res);
 		}
-		res += "</html>";
-		System.out.println(res);
-		game.newWord(current);
-		return res;
+
 }
 
 //	public String updateColorCurrent()
