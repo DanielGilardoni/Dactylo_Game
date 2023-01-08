@@ -110,6 +110,7 @@ public class SettingsView extends JPanel {
 			dactylo.setJoueurs(joueurs);
 			gui.setGameView();
 		});
+		System.out.print("yooo");
 		return (confirm);
 	}
 

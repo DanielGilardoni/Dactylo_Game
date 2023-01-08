@@ -21,7 +21,6 @@ public abstract sealed class DactyloGame permits NormalMode, SoloMode, MultiPlay
         else
             this.joueurs = copy(joueurs);
         this.texte = new ListeMots(texteFile);
-        this.texte.chargerTexte();
         this.nextWord = texte.getListe().peek();
         this.gameMode = gameMode;
         this.time = 30;//30 secondes par defaut

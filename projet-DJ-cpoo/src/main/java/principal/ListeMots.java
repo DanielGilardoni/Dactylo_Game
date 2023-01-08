@@ -15,8 +15,8 @@ public class ListeMots {
             throw new IllegalArgumentException("Le fichier ne peut pas être null");
         }
         this.texte = texte;
-        System.out.println(texte.getAbsolutePath());
         liste = new LinkedList<Mot>();
+        chargerTexte();
     }
 
     public LinkedList<Mot> getListe(){
@@ -41,7 +41,7 @@ public class ListeMots {
             }
         }
         catch (FileNotFoundException e) {
-            System.out.println("Erreur le fichier n'a pas été trouvé.");
+            throw new IllegalArgumentException("Erreur le fichier n'a pas été trouvé.");
         }
     }
 
@@ -51,7 +51,9 @@ public class ListeMots {
     // et supprimer quand un mot est tapé)
 
     public void remove(){
-        liste.removeFirst();
+        if(!liste.isEmpty()){
+            liste.removeFirst();
+        }
     }
 
     public void creerTampon(){

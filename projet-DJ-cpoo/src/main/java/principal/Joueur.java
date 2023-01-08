@@ -23,6 +23,9 @@ public class Joueur {
     }
 
     public void setNom(String nom){
+        if (nom == null) {
+            throw new IllegalArgumentException("On ne peut pas set le nom à null.");
+        }
         this.nom = nom;
     }
 
@@ -31,6 +34,9 @@ public class Joueur {
     }    
 
     public void setVies(int nbVie){
+        if (nbVie < 0) {
+            throw new IllegalArgumentException("On ne peut pas set le nombre de vie à une valeur negative.");
+        }
         this.nbVies = nbVie;
     }
 
