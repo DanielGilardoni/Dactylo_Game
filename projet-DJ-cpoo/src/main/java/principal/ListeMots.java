@@ -56,14 +56,4 @@ public class ListeMots {
             liste.removeFirst();
         }
     }
-
-    public void creerTampon(){
-        int compteur = 0;
-        Iterator<Mot> it = liste.iterator();
-        while (it.hasNext() && compteur < 15) {
-            Mot mot = it.next();
-            System.out.println(mot.getMot());
-            compteur++;
-        }
-    }
 }
