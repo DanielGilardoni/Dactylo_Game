@@ -54,12 +54,9 @@ public class ModeNormalView extends JPanel{
 		String current = first.getMot();
         String res = "";
 		int length = first.getMot().length();
-        System.out.println("pos = " + this.pos + " length = " + length);
 		if (this.pos <= length) {
-            System.out.println("pos <= length");
 			res += "<html>";
 			if (this.pos >= 0 && this.pos < length) {
-                System.out.println("pos >= 0");
 				String tmp = "";
 				for(int i = 0; i < this.pos; i++) {
 					tmp += current.charAt(i);
@@ -67,36 +64,33 @@ public class ModeNormalView extends JPanel{
 				res += tmp;
 			}
 			if (this.pos != length) {
-                System.out.println("pos != length");
 				res += "<FONT COLOR=YELLOW>" + current.charAt(this.pos) + "</FONT>";
             }
             if (this.pos == length) {
-                System.out.println("pos == length");
                 if (this.list.getListe().get(0).compareMots(first) == true) {
-                    System.out.println("compareMots == true");
                     res += "<FONT COLOR=GREEN>" + res + "</FONT>";
                 }
                 else {
-                    System.out.println("compareMots == false");
                     res += "<FONT COLOR=RED>" + res + "</FONT>";
                 } 
             }
 			else if (this.pos < length) {
-                System.out.println("pos + 1 < length");
 				char [] tmp = new char [length - this.pos - 1];
 				for(int i = 0, j = this.pos + 1; j < length; i++, j++)
 					tmp[i] = current.charAt(j);
 				String temp = "<FONT COLOR=WHITE>" + new String(tmp) + "</FONT>";
 				res += temp;
 			}
-            System.out.println("res = " + res);
 			res += "</html>";
-            System.out.println("pos = " + pos);
-			game.newWord(current, pos);
-			return (res);
-		}else {
-            return (res);
+        }else {
+            if (this.pos == length) {
+                return (res);
+            }else {
+                game.newWord(current, pos);
+                return (res);
+            }
 		}
+        return (res);
 
 }
 
