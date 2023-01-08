@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 
 import principal.ListeMots;
 import principal.DactyloGame;
+import principal.Mot;
 
 public class ModeNormalView extends JPanel{
     private DactyloGame dactylo = null;
@@ -19,24 +20,24 @@ public class ModeNormalView extends JPanel{
         this.dactylo = dactylo;
         this.list = list;
         this.setBackground(Gui.MINT_COLOR);
-        mots = createMotsPanel(list);
+        this.mots = createMotsPanel(list);
         this.game = game;
-//        this.curString = updateColorCurrent();
-//        JLabel curJLabel = new JLabel(curString);
-//        curJLabel.setFont(new Font("Verdana", Font.PLAIN, 25));
-//        JPanel curJPanel = new JPanel();
-//        curJPanel.setBackground(Gui.BEIGE_COLOR);
-//        curJPanel.add(curJLabel);
-//        this.add(curJPanel);
+        this.curString = updateColorCurrent();
+        JLabel curJLabel = new JLabel(curString);
+        curJLabel.setFont(new Font("Verdana", Font.PLAIN, 25));
+        JPanel curJPanel = new JPanel();
+        curJPanel.setBackground(Gui.BEIGE_COLOR);
+        curJPanel.add(curJLabel);
+        this.add(curJPanel);
 
-        for (int i = 1; i < dactylo.getMax(); i++)
+        for (int i = 1; i < this.dactylo.getMax(); i++)
             this.add(mots[i]);
     }
 
     private JPanel[] createMotsPanel(ListeMots list) {
         JPanel []res = new JPanel[dactylo.getMax()];
 	        for (int i = 0; i < dactylo.getMax(); i++) {
-            JLabel mot = new JLabel(list.getListe().get(i).getMot());
+            JLabel mot = new JLabel(this.list.getListe().get(i).getMot());
             mot.setForeground(Gui.BLACK_COLOR);
             mot.setFont(new Font("Verdana", Font.PLAIN, 25));
             res[i] = new JPanel();
@@ -46,70 +47,97 @@ public class ModeNormalView extends JPanel{
         return (res);
     }
 
-//    private String updateColorCurrent()
-//    {
-//        String res = "";
-//        for (int i = 0; i < list.getListe().size(); i++)
-//        {
-//            if (list.getListe().get(i).getMot() == list.getListe().peek().getMot())
-//            {
-//                mots[i].setBackground(Gui.BEIGE_COLOR);
-//                res = list.getListe().get(i).getMot();
-//            }
-//            else
-//                mots[i].setBackground(Gui.MINT_COLOR);
-//        }
-//        return res;
-//    }
+    private String updateColorCurrent() {
+		Mot first = this.list.getListe().getFirst();
+		String current = first.getMot();
+        String res = "";
+		int pos = first.getMot().charAt(0);
+		int length = first.getMot().length();
+		if (pos <= length) {
+			res += "<html>";
+			if (pos > 0) {
+				String tmp = "";
+				for(int i = 0; i < pos; i++) {
+					tmp += current.charAt(i);
+//					boolean[] bool = first.getGoodkey();
+//					if (bool[i] == false)
+//						tmp += "<FONT COLOR=RED>" + current.charAt(i) +  "</FONT>";
+//					else
+//						tmp += "<FONT COLOR=GREEN>" + current.charAt(i) +  "</FONT>";
+				}
+				res += tmp;
+			}
+			if (pos != length)
+				res += "<FONT COLOR=YELLOW>" + current.charAt(pos) + "</FONT>";
+//			if (pos + 1 < length) {
+//				char [] tmp = new char [length - pos - 1];
+//				for(int i = 0, j = pos + 1; j < length; i++, j++)
+//					tmp[i] = current.charAt(j);
+//				String temp = "<FONT COLOR=WHITE>" + new String(tmp) + "</FONT>";
+//				res += temp;
+//			}
+//			res += "</html>";
+//			game.setoldString(res);
+//			return (res);
+//		}else {
+//			return (game.getoldString());
+//		}
+
+		}
+		else {
+			if (this.list.getListe().get(0).compareMots(first) == true) {
+				res += "<FONT COLOR=GREEN>" + res + "</FONT>";
+			}
+			else {
+				res += "<FONT COLOR=RED>" + res + "</FONT>";
+			} 
+		}
+		res += "</html>";
+		System.out.println(res);
+		game.newWord(current);
+		return res;
+}
+
+//	public String updateColorCurrent()
+//	{
+//		Mot first = this.list.getFirst();
+//		String current = first.getStr();
+//		String res = "";
+//		int pos = first.getPos();
+//		int length = first.getLength();
+//
+//		if (pos <= length) {
+//			res += "<html>";
+//			if (pos > 0) {
+//				String tmp = "";
+//				for(int i = 0; i < pos; i++) {
+//					boolean[] bool = first.getGoodkey();
+//					if (bool[i] == false)
+//						tmp += "<FONT COLOR=RED>" + current.charAt(i) +  "</FONT>";
+//					else
+//						tmp += "<FONT COLOR=GREEN>" + current.charAt(i) +  "</FONT>";
+//				}
+//				res += tmp;
+//			}
+//			if (pos != length)
+//				res += "<FONT COLOR=YELLOW>" + current.charAt(pos) + "</FONT>";
+//			if (pos + 1 < length) {
+//				char [] tmp = new char [length - pos - 1];
+//				for(int i = 0, j = pos + 1; j < length; i++, j++)
+//					tmp[i] = current.charAt(j);
+//				String temp = "<FONT COLOR=WHITE>" + new String(tmp) + "</FONT>";
+//				res += temp;
+//			}
+//			res += "</html>";
+//			game.setoldString(res);
+//			return (res);
+//		}else {
+//			return (game.getoldString());
+//		}
+//	}
 
     public JPanel getPanel() {
 		return this;
 	}
 
 }
-/*
-	public String updateColorCurrent()
-	{
-		Mot first = this.list.getFirst();
-		String current = first.getStr();
-		String res = "";
-		int pos = first.getPos();
-		int length = first.getLength();
-
-		if (pos <= length)
-		{
-			res += "<html>";
-	
-			if (pos > 0)
-			{
-				String tmp = "";
-				for(int i = 0; i < pos; i++)
-				{
-					boolean[] bool = first.getGoodkey();
-					if (bool[i] == false)
-						tmp += "<FONT COLOR=RED>" + current.charAt(i) +  "</FONT>";
-					else
-						tmp += "<FONT COLOR=GREEN>" + current.charAt(i) +  "</FONT>";
-				}
-				res += tmp;
-			}
-			if (pos != length)
-				res += "<FONT COLOR=YELLOW>" + current.charAt(pos) + "</FONT>";
-			if (pos + 1 < length)
-			{
-				char [] tmp = new char [length - pos - 1];
-				for(int i = 0, j = pos + 1; j < length; i++, j++)
-					tmp[i] = current.charAt(j);
-				String temp = "<FONT COLOR=WHITE>" + new String(tmp) + "</FONT>";
-				res += temp;
-			}
-			res += "</html>";
-			game.setoldString(res);
-			return (res);
-		}
-		else
-		{
-			return (game.getoldString());
-		}
-	}
- */

@@ -10,7 +10,7 @@ public class FinishView extends JPanel{
 		this.setBackground(Gui.MINT_COLOR);
 		this.setLayout(new GridLayout(1, 2));
 
-//		this.add(new Statistiquespanel(gui.getJeu()));
+//		this.add(new StatsView (gui.getJeu()));
 
 		JPanel buttons = new JPanel();
 		buttons.setLayout(new GridLayout(3, 1));
@@ -23,14 +23,14 @@ public class FinishView extends JPanel{
 
 		JPanel lost = new JPanel();
 		lost.setLayout(new GridLayout(3, 1));
-		JButton retry = new JButton("NOUVELLE PARTIE ?");
+		JButton retry = new JButton("AUTRE JEU ?");
 		retry.addActionListener(e -> {
 			gui.setModeView();
 		});
 		retry.setBackground(Gui.MINT_COLOR);
 		lost.add(retry);
 
-		JButton settings = new JButton("PARAMETRES");
+		JButton settings = new JButton("NOUVELLE PARTIE ?");
 		retry.addActionListener(e -> {
 			gui.setSettingsView();
 		});
